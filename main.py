@@ -1,7 +1,8 @@
-from indeed import extract_indeed_pages, extract_indeed_jobs
+from indeed import get_jobs as get_indeed_jobs
+from so import get_jobs as get_so_jobs
+from save import save_to_file
 
-# 최대 페이지 구하기
-last_indeed_pages = extract_indeed_pages()
-# 페이지당 일목록 가져오기
-indeed_jobs = extract_indeed_jobs(last_indeed_pages)
-print(indeed_jobs)
+indeed_jobs = get_indeed_jobs()  # scrap indeed jobs
+so_jobs = get_so_jobs()  # scrap stackoverflow jobs
+jobs = indeed_jobs + so_jobs
+save_to_file(jobs)  # CSV로 저장
